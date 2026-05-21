@@ -13,6 +13,55 @@ import { createCsvTextFromTable } from '../../utils';
  */
 
 const AllHeaders = ["序号", "交易日期", "交易时间", "交易类型", "借贷", "交易金额", "余额", "对方账号", "对方户名", "交易地点", "摘要"];
+const PersonalStatementHeaders = ["交易日期", "交易地点", "交易方式", "借贷状态", "交易金额", "余额"];
+
+type BocomDebitFormat = {
+  headers: string[];
+  rowStartColIdx: number;
+  rowStartPattern: RegExp;
+  missingHeaderMessage: string;
+  rowLength: number;
+};
+
+const BocomDebitFormats: BocomDebitFormat[] = [
+  {
+    headers: AllHeaders,
+    rowStartColIdx: 0,
+    rowStartPattern: /^\d+$/,
+    missingHeaderMessage: '未找到序号标题列',
+    rowLength: 0,
+  },
+  {
+    headers: PersonalStatementHeaders,
+    rowStartColIdx: 0,
+    rowStartPattern: /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
+    missingHeaderMessage: '未找到交易日期标题列',
+    rowLength: PersonalStatementHeaders.length,
+  },
+];
+
+const findHeaderItems = (allItems: TextItem[], headers: string[]) => {
+  return headers
+    .map((header) => allItems.find((item) => item.str === header))
+    .filter((item): item is TextItem => Boolean(item));
+};
+
+const resolveStatementFormat = (allItems: TextItem[]) => {
+  for (const format of BocomDebitFormats) {
+    const headerItems = findHeaderItems(allItems, format.headers);
+    const rowStartHeaderItem = headerItems.find((item) => item.str === format.headers[format.rowStartColIdx]);
+
+    if (rowStartHeaderItem && headerItems.length === format.headers.length) {
+      return {
+        format,
+        headerItems,
+        rowStartHeaderItem,
+      };
+    }
+  }
+
+  throw Error(BocomDebitFormats.map((format) => format.missingHeaderMessage).join('；'));
+};
 
 const extractInfoFromPage = async (page: pdfjs.PDFPageProxy) => {
   const textContent = await page.getTextContent();
@@ -20,10 +69,7 @@ const extractInfoFromPage = async (page: pdfjs.PDFPageProxy) => {
     (item: TextItem | TextMarkedContent): item is TextItem => Boolean(`${(item as TextItem)?.str ?? ''}`.trim())
   );
 
-  const headerItems = AllHeaders
-    .map((header) => allItems.find((item) => item.str === header))
-    .filter((item): item is TextItem => Boolean(item));
-  const headerSerialNumItem = headerItems.find((item) => item.str === AllHeaders[0]);
+  const { format, headerItems, rowStartHeaderItem } = resolveStatementFormat(allItems);
   
   const headerXRanges = headerItems.map((item, index) => {
     return {
@@ -33,10 +79,6 @@ const extractInfoFromPage = async (page: pdfjs.PDFPageProxy) => {
       xRight: (headerItems[index + 1]?.transform[4] ?? 999), // 最后一栏兜底 999
     }
   });
-
-  if (!headerSerialNumItem) {
-    throw Error('未找到序号标题列')
-  }
 
   const getItemXIndex = (item: TextItem) => {
     const x = item.transform[4];
@@ -49,9 +91,11 @@ const extractInfoFromPage = async (page: pdfjs.PDFPageProxy) => {
   const ignoreItems: TextItem[] = [];
   // const curRow: TextItem[][] = [];
 
-  // 在第一列序号列 && 纯数字
-  const isSerialNumCol = (item: TextItem) => {
-    return getItemXIndex(item) === 0 && /^\d+$/.test(item.str);
+  // 在起始列匹配行首标识：旧版为序号，新版个人交易清单为交易日期。
+  const isRowStartCol = (item: TextItem) => {
+    return getItemXIndex(item) === format.rowStartColIdx &&
+      item.transform[5] < rowStartHeaderItem.transform[5] &&
+      format.rowStartPattern.test(item.str);
   };
 
   let hasEnded = false;
@@ -66,9 +110,9 @@ const extractInfoFromPage = async (page: pdfjs.PDFPageProxy) => {
       return;
     }
 
-    if (isSerialNumCol(item)) {
+    if (isRowStartCol(item)) {
       // 新的一行初始化，直接放入 table
-      const newRow: TextItem[][] = Array(Headers.length).fill(null).map(() => []);
+      const newRow: TextItem[][] = Array(format.rowLength).fill(null).map(() => []);
       newRow[0] = [item];
       table.push(newRow);
     } else {
