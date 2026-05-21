@@ -1,6 +1,7 @@
 import { AbcDebitAdapter } from './abc-debit';
 import { BocomCreditAdapter } from './bocom-credit';
 import { BocomDebitAdapter } from './bocom-debit';
+import { CgbCreditAdapter } from './cgb-credit'
 import { CmbCreditAdapter } from './cmb-credit'
 import { CmbDebitAdapter } from './cmb-debit'
 import { BocDebitAdapter } from './boc-debit'
@@ -10,6 +11,7 @@ import { compareKey } from '../utils';
 
 export const AdapterList = [
     AbcDebitAdapter,
+    CgbCreditAdapter,
     CmbCreditAdapter,
     CmbDebitAdapter,
     BocomCreditAdapter,
