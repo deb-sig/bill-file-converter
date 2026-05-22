@@ -1,10 +1,11 @@
 import { App as AntdApp, Button, Segmented, Upload } from "antd";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SegmentedOptions } from "antd/es/segmented";
 import { RcFile } from "antd/es/upload";
 import { CheckCircleOutlined, ClockCircleOutlined, CloudUploadOutlined, DownloadOutlined, LoadingOutlined } from "@ant-design/icons";
 import { AdapterMap, AdapterList } from '../../adapters';
-import { downloadCsvFile } from "../../utils";
+import { downloadCsvFile, downloadZipFile } from "../../utils";
+import { convertFiles, ConvertFailure, ConvertSuccess } from "./batch";
 import './index.css';
 
 const options: SegmentedOptions<string> = AdapterList.map((a) => {
@@ -23,13 +24,20 @@ const options: SegmentedOptions<string> = AdapterList.map((a) => {
 const Convertor: React.FC = () => {
   const { modal } = AntdApp.useApp();
   const [selectedKey, setSelectedKey] = useState<string>(AdapterList[0]?.key);
-  const [sourceFile, setSourceFile] = useState<File>();
-  const [csv, setCsv] = useState<string>();
+  const [sourceFiles, setSourceFiles] = useState<File[]>([]);
+  const [convertedFiles, setConvertedFiles] = useState<ConvertSuccess[]>([]);
+  const [failedFiles, setFailedFiles] = useState<ConvertFailure[]>([]);
+  const [converting, setConverting] = useState(false);
+  const uploadFileListRef = useRef<File[]>([]);
+  const uploadTimerRef = useRef<number | undefined>(undefined);
   const selectedAdapter = AdapterMap[selectedKey];
 
   const resetState = () => {
-    setSourceFile(undefined);
-    setCsv(undefined);
+    setSourceFiles([]);
+    setConvertedFiles([]);
+    setFailedFiles([]);
+    setConverting(false);
+    uploadFileListRef.current = [];
   };
 
   const handleSelectorChange = (k: string) => {
@@ -37,37 +45,71 @@ const Convertor: React.FC = () => {
     resetState();
   }
 
-  const handleUpload = async (file: RcFile) => {
-    try {
-      setSourceFile(file);
-      setCsv(undefined);
-      const csv = await selectedAdapter.converter(file);
-      setCsv(csv);
-    } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      modal.error({
-        title: '文件解析失败',
-        content: message,
-        onOk: resetState,
-        afterClose: resetState,
+  const handleBatchUpload = async (files: File[]) => {
+    setSourceFiles(files);
+    setConvertedFiles([]);
+    setFailedFiles([]);
+    setConverting(true);
+
+    const result = await convertFiles(selectedAdapter, files);
+    setConvertedFiles(result.successes);
+    setFailedFiles(result.failures);
+    setConverting(false);
+
+    if (result.failures.length) {
+      modal.warning({
+        title: '部分文件解析失败',
+        content: (
+          <div>
+            {result.failures.map((failure) => (
+              <div key={failure.sourceFile.name}>
+                {failure.sourceFile.name}：{failure.message}
+              </div>
+            ))}
+          </div>
+        ),
       });
     }
+  };
+
+  const handleUpload = (_file: RcFile, fileList: RcFile[]) => {
+    uploadFileListRef.current = fileList;
+    if (uploadTimerRef.current) {
+      window.clearTimeout(uploadTimerRef.current);
+    }
+    uploadTimerRef.current = window.setTimeout(() => {
+      void handleBatchUpload([...uploadFileListRef.current]);
+      uploadTimerRef.current = undefined;
+    }, 0);
+
     return false;
   };
 
   const handleDownload = () => {
-    if (sourceFile && csv) {
+    if (convertedFiles.length === 1) {
+      const [{ sourceFile, csv }] = convertedFiles;
       downloadCsvFile(csv, sourceFile.name);
+      return;
     }
+
+    downloadZipFile(
+      convertedFiles.map(({ sourceFile, csv }) => ({ name: sourceFile.name, content: csv })),
+      `${selectedAdapter.key}-csv`,
+    );
   }
 
   const renderStatus = () => {
-    if (sourceFile && !csv) {
-      return <><LoadingOutlined /> 文件转换中：{sourceFile.name || '未知文件名'}</>;
+    if (converting) {
+      return <><LoadingOutlined /> 文件转换中：共 {sourceFiles.length} 个文件</>;
     }
 
-    if (sourceFile && csv) {
-      return <><CheckCircleOutlined /> 文件转换完成：{sourceFile.name || '未知文件名'}</>;
+    if (sourceFiles.length) {
+      return (
+        <>
+          <CheckCircleOutlined />
+          文件转换完成：成功 {convertedFiles.length} 个，失败 {failedFiles.length} 个
+        </>
+      );
     }
 
     return <><ClockCircleOutlined /> 等待文件上传</>;
@@ -85,7 +127,7 @@ const Convertor: React.FC = () => {
         <Upload.Dragger
           className="app-convertor-upload"
           name="file"
-          multiple={false}
+          multiple
           showUploadList={false}
           accept={selectedAdapter.sourceFileFormat.map((f) => `.${f}`).join(',')}
           beforeUpload={handleUpload}
@@ -101,10 +143,10 @@ const Convertor: React.FC = () => {
           <Button
             type="primary"
             icon={<DownloadOutlined />}
-            disabled={!csv}
+            disabled={converting || !convertedFiles.length}
             onClick={handleDownload}
           >
-            下载 CSV
+            {convertedFiles.length > 1 ? `下载 ZIP (${convertedFiles.length})` : '下载 CSV'}
           </Button>
         </div>
       </div>
