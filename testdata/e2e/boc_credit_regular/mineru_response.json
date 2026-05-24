@@ -1,0 +1,18 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "中国银行信用卡账单(2512年00月) 人民币账户交易明细 美元账户交易明细"
+    },
+    {
+      "type": "table",
+      "page_idx": 1,
+      "table_body": "<table><tr><th>交易日</th><th>银行记账日</th><th>卡号后四位</th><th>交易描述</th><th>存入</th><th>支出</th></tr><tr><td>人民币账户交易明细</td></tr><tr><td>2025-01-24</td><td>2025-01-25</td><td>5419</td><td>随机商家CHNCHN</td><td></td><td>12.26</td></tr><tr><td>2025-02-05</td><td>2025-02-06</td><td></td><td>存款利息</td><td>5.62</td><td></td></tr><tr><td>已为您减免本年度年费</td><td></td><td></td><td>已为您减免本年度年费</td><td></td><td></td></tr></table>"
+    },
+    {
+      "type": "table",
+      "page_idx": 2,
+      "table_body": "<table><tr><th>交易日</th><th>银行记账日</th><th>卡号后四位</th><th>交易描述</th><th>存入</th><th>支出</th></tr><tr><td>美元账户交易明细</td></tr><tr><td>2025-01-15</td><td>2025-01-16</td><td>7185</td><td>MICROSOFT*XBOXJPN</td><td></td><td>1.92</td></tr></table>"
+    }
+  ]
+}

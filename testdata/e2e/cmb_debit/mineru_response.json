@@ -1,0 +1,13 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "招商银行交易流水 测试账户"
+    },
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><th>Date</th><th>Currency</th><th>Transaction Amount</th><th>Balance</th><th>Transaction Type</th><th>Counter Party</th><th>Customer Summary</th></tr><tr><td>2026-01-01</td><td>CNY</td><td>-8.80</td><td>200.00</td><td>消费</td><td>测试商户A</td><td>午餐</td></tr><tr><td>记账日期</td><td>货币</td><td>交易金额</td><td>联机余额</td><td>交易摘要</td><td>对手信息</td><td>客户摘要</td></tr><tr><td>2026-01-02</td><td>CNY</td><td>100.00</td><td>300.00</td><td>转入</td><td>测试对象B</td><td></td></tr></table>"
+    }
+  ]
+}

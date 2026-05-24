@@ -1,0 +1,18 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "交通银行个人客户交易清单 测试账户"
+    },
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><th>Serial Num 序号</th><th>Trans Date 交易日期</th><th>Trans Time 交易时间</th><th>Trading Type 交易类型</th><th>Dc Flg 借贷</th><th>Trans Amt 交易金额</th><th>Balance 余额</th><th>Payment Receipt Account 对方账号</th><th>Payment Receipt Account Name 对方户名</th><th>Trading Place 交易地点</th><th>Abstract 摘要</th></tr><tr><td>1</td><td>2024-03-21</td><td>00:00:00</td><td>存款利息</td><td>贷 Cr</td><td>0.02</td><td>34.63</td><td>ACCT001</td><td>测试利息户</td><td>批处理</td><td></td></tr><tr><td>2</td><td>2024-04-10</td><td>23:15:42</td><td>信用卡转账还款</td><td>借 Dr</td><td>0.01</td><td>34.62</td><td>ACCT002</td><td>测试用户</td><td>其他</td><td></td></tr><tr><td>Serial Num</td><td>Trans Date</td><td>Trans Time</td><td>Trading Type</td><td>Dc Flg</td><td>Trans Amt</td><td>Balance</td><td>Payment Receipt Account</td><td>Payment Receipt Account Name</td><td>Trading Place</td><td>Abstract</td></tr><tr><td>3</td><td>2024-09-02</td><td>18:12:19</td><td>跨行汇款</td><td>贷 Cr</td><td>10,000.00</td><td>30,063.20</td><td>ACCT003</td><td>测试用户</td><td>支付平台</td><td>转账</td></tr><tr><td>打印完毕</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>"
+    },
+    {
+      "type": "table",
+      "page_idx": 1,
+      "table_body": "<table><tr><th>Num序号</th><th>Trans Date交易日期</th><th>Trans Time交易时间</th><th>Trading Type交易类型</th><th>Dc Flg借贷</th><th>Trans Amt交易金额</th><th>Balance余额</th><th>Account对方账号</th><th>Account Name对方户名</th><th>Trading Place交易地点</th><th>Abstract摘要</th></tr><tr><td>4</td><td>2024-09-22</td><td>22:27:53</td><td>其他交易</td><td>贷 Cr</td><td>10.00</td><td>58.96</td><td>ACCT004</td><td>测试用户</td><td>网络支付</td><td>测试转账</td></tr></table>"
+    }
+  ]
+}

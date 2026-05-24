@@ -1,0 +1,18 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "交通银行白金信用卡正常电子账单 测试账单"
+    },
+    {
+      "type": "table",
+      "page_idx": 2,
+      "table_body": "<table><tr><th>交易日期TransactionDate</th><th>记账日期PostingDate</th><th>卡末四位Card Number(Last 4 digits)</th><th>交易说明Description of Transaction</th><th>交易金额TransactionCurr/Amt</th><th>入账金额PaymentCurr/Amt</th></tr><tr><td>03/22</td><td>03/22</td><td>0000</td><td>信用卡还款 转账还款-本行-测试用户 3378</td><td>CNY1.00</td><td>CNY1.00</td></tr><tr><td>03/22</td><td>03/22</td><td>0000</td><td>红包还款 还款红包TESTA</td><td>CNY1.00</td><td>CNY1.00</td></tr></table>"
+    },
+    {
+      "type": "table",
+      "page_idx": 2,
+      "table_body": "<table><tr><th>交易</th><th>记账</th><th>卡末</th><th>交易</th><th>交易</th><th>入账</th></tr><tr><th>日期</th><th>日期</th><th>四位</th><th>说明</th><th>金额</th><th>金额</th></tr><tr><th>Transaction Date</th><th>Posting Date</th><th>Card Number (Last 4 digits)</th><th>Description of Transaction</th><th>Transaction Curr/Amt</th><th>Payment Curr/Amt</th></tr><tr><td>03/22</td><td>03/22</td><td>0000</td><td>消费 财付通-测试缴费</td><td>CNY0.20</td><td>CNY0.20</td></tr><tr><td>04/08</td><td>04/08</td><td>0000</td><td>消费 支付宝-测试服务</td><td>CNY546.54</td><td>CNY546.54</td></tr></table>"
+    }
+  ]
+}

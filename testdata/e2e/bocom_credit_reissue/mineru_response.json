@@ -1,0 +1,18 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "交通银行信用卡补发电子账单 测试账单"
+    },
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><td>以下是您的还款、退货及费用返还明细</td></tr><tr><th>交易日期</th><th>记账日期</th><th>交易说明</th><th>交易币种/金额</th><th>入账币种/金额</th></tr><tr><td>人民币账户明细</td></tr><tr><td>主卡 卡号末四位 0000</td></tr><tr><td>2025-04-30</td><td>2025-04-30</td><td>信用卡还款 转账还款-银联-测试用户 1024付款尾号1024测试用户</td><td>CNY34.26</td><td>CNY 34.26</td></tr></table>"
+    },
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><th>交易日期</th><th>记账日期</th><th>交易说明</th><th>交易币种/金额</th><th>入账币种/金额</th></tr><tr><td>人民币账户明细</td></tr><tr><td>2025-04-12</td><td>2025-04-12</td><td>消费 测试商户A</td><td>CNY 18.79</td><td>CNY 18.79</td></tr><tr><td>2025-04-13</td><td>2025-04-13</td><td>消费 测试商户B</td><td>CNY 2.80</td><td>CNY 2.80</td></tr></table>"
+    }
+  ]
+}

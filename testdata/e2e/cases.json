@@ -1,0 +1,127 @@
+[
+  {
+    "name": "abc_debit",
+    "type": "abc_debit",
+    "inputs": [
+      {
+        "filename": "abc_debit.pdf",
+        "response": "abc_debit/mineru_response.json"
+      }
+    ],
+    "expected": "abc_debit/expected.csv"
+  },
+  {
+    "name": "bocom_debit",
+    "type": "bocom_debit",
+    "inputs": [
+      {
+        "filename": "bocom_debit.pdf",
+        "response": "bocom_debit/mineru_response.json"
+      }
+    ],
+    "expected": "bocom_debit/expected.csv"
+  },
+  {
+    "name": "boc_debit",
+    "type": "boc_debit",
+    "inputs": [
+      {
+        "filename": "boc_debit.pdf",
+        "response": "boc_debit/mineru_response.json"
+      }
+    ],
+    "expected": "boc_debit/expected.csv"
+  },
+  {
+    "name": "boc_credit_regular",
+    "type": "boc_credit_regular",
+    "inputs": [
+      {
+        "filename": "boc_credit_regular.pdf",
+        "response": "boc_credit_regular/mineru_response.json"
+      }
+    ],
+    "expected": "boc_credit_regular/expected.csv"
+  },
+  {
+    "name": "boc_credit_reissue",
+    "type": "boc_credit_reissue",
+    "inputs": [
+      {
+        "filename": "boc_credit_reissue.pdf",
+        "response": "boc_credit_reissue/mineru_response.json"
+      }
+    ],
+    "expected": "boc_credit_reissue/expected.csv"
+  },
+  {
+    "name": "bocom_credit_regular",
+    "type": "bocom_credit_regular",
+    "inputs": [
+      {
+        "filename": "bocom_credit_regular.pdf",
+        "response": "bocom_credit_regular/mineru_response.json"
+      }
+    ],
+    "expected": "bocom_credit_regular/expected.csv"
+  },
+  {
+    "name": "bocom_credit_reissue",
+    "type": "bocom_credit_reissue",
+    "inputs": [
+      {
+        "filename": "bocom_credit_reissue.pdf",
+        "response": "bocom_credit_reissue/mineru_response.json"
+      }
+    ],
+    "expected": "bocom_credit_reissue/expected.csv"
+  },
+  {
+    "name": "cmb_debit",
+    "type": "cmb_debit",
+    "inputs": [
+      {
+        "filename": "cmb_debit.pdf",
+        "response": "cmb_debit/mineru_response.json"
+      }
+    ],
+    "expected": "cmb_debit/expected.csv"
+  },
+  {
+    "name": "cmb_credit",
+    "type": "cmb_credit",
+    "inputs": [
+      {
+        "filename": "cmb_credit.pdf",
+        "response": "cmb_credit/mineru_response.json"
+      }
+    ],
+    "expected": "cmb_credit/expected.csv"
+  },
+  {
+    "name": "zbank_debit",
+    "type": "zbank_debit",
+    "inputs": [
+      {
+        "filename": "zbank_debit_001.pdf",
+        "response": "zbank_debit/mineru_response_1.json"
+      },
+      {
+        "filename": "zbank_debit_002.pdf",
+        "response": "zbank_debit/mineru_response_2.json"
+      }
+    ],
+    "expected": "zbank_debit/expected.csv"
+  },
+  {
+    "name": "zgc_debit",
+    "type": "zgc_debit",
+    "inputs": [
+      {
+        "filename": "zgc_debit.pdf",
+        "response": "zgc_debit/mineru_response.json"
+      }
+    ],
+    "expected": "zgc_debit/expected.csv"
+  }
+]

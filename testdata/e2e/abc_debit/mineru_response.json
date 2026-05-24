@@ -1,0 +1,13 @@
+{
+  "content_list": [
+    {
+      "type": "text",
+      "text": "中国农业银行交易明细 测试账户"
+    },
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><th>交易日期</th><th>交易时间</th><th>交易摘要</th><th>交易金额</th><th>本次余额</th><th>对手信息</th><th>日 志 号</th><th>交易渠道</th><th>交易附言</th></tr><tr><td>20260101</td><td>10:00:00</td><td>转账</td><td>-12.34</td><td>1000.00</td><td>测试商户A</td><td>LOG001</td><td>手机银行</td><td></td></tr><tr><td>交易日期</td><td>交易时间</td><td>交易摘要</td><td>交易金额</td><td>本次余额</td><td>对手信息</td><td>日志号</td><td>交易渠道</td><td>交易附言</td></tr><tr><td>20260102</td><td></td><td>退款</td><td>12.34</td><td>1012.34</td><td>测试商户B</td><td>LOG002</td><td>柜面</td><td>测试备注</td></tr></table>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "content_list": [
+    {
+      "type": "table",
+      "page_idx": 0,
+      "table_body": "<table><tr><th>交易时间</th><th>币种</th><th>交易金额</th><th>账户余额</th><th>对方姓名</th><th>对方账号</th><th>摘要</th></tr><tr><td>2026010211:30:05</td><td>CNY</td><td>10.00</td><td>105.00</td><td>测试对象B</td><td>ACCT-B</td><td>转入</td></tr></table>"
+    }
+  ]
+}

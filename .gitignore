@@ -27,5 +27,12 @@ coverage
 
 # debug
 desensitize
+.private/
 
 .pnpm-store
+
+# Go CLI outputs
+/bill-file-converter
+output
+output-*
+config.yaml
