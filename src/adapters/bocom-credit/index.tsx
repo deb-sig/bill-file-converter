@@ -4,6 +4,22 @@ import { createCsvTextFromTable } from '../../utils';
 
 const Headers = ['交易日期', '记账日期', '交易说明', '交易币种/金额', '入账币种/金额'];
 
+// 标准化单元格文本，兼容邮件模板中的换行、缩进和不换行空格。
+const getNormalizedText = ($element: Element) => {
+  const $clone = $element.cloneNode(true) as Element;
+  $clone.querySelectorAll('br').forEach(($br) => $br.replaceWith(' '));
+  return ($clone.textContent || '').replace(/\u00a0/g, ' ').trim().replace(/\s+/g, ' ');
+};
+
+const getNormalizedHeaderText = ($element: Element) => {
+  return getNormalizedText($element).replace(/\s+/g, '');
+};
+
+const getNormalizedCellText = ($element: Element) => {
+  return getNormalizedText($element)
+    .replace(/(\d{4})\s*-\s*(\d{2})\s*-\s*(\d{2})/g, '$1-$2-$3');
+};
+
 const extractInfoFromHtml = (html: string) => {
   const parser = new DOMParser();
   const $doc = parser.parseFromString(html, 'text/html');
@@ -12,23 +28,24 @@ const extractInfoFromHtml = (html: string) => {
   const resultTable: string[][] = [Headers];
 
   $tableList.forEach(($table) => {
-    const $headThList = $table.querySelector('thead')?.querySelector('tr')?.querySelectorAll('th');
-    // use `innerHTML` instead of `innerText`, see https://github.com/jsdom/jsdom/issues/1245
-    const matched = [...$headThList || []].every(($th, idx) => $th.innerHTML === Headers[idx]);
-    if (!matched) {
+    const $trList = [...$table.querySelectorAll('tr')];
+    const headerRowIndex = $trList.findIndex(($tr) => {
+      const $cellList = [...$tr.querySelectorAll('th,td')];
+      return $cellList.length === Headers.length &&
+        $cellList.every(($cell, idx) => getNormalizedHeaderText($cell) === Headers[idx]);
+    });
+    if (headerRowIndex < 0) {
       return;
     }
 
-    const $bodyTrList = $table.querySelector('tbody')?.querySelectorAll('tr');
-    [...($bodyTrList || [])].forEach(($tr) => {
-      const $tdList = $tr.querySelectorAll('td');
+    $trList.slice(headerRowIndex + 1).forEach(($tr) => {
+      const $tdList = [...$tr.querySelectorAll('td')];
       
       if ($tdList.length !== Headers.length) {
         return;
       }
 
-      // 去掉头尾空格，以及中间多余的空格
-      const row = [...$tdList].map(($td) => $td.innerHTML.trim().replace(/\s+/g, ' '));
+      const row = $tdList.map(getNormalizedCellText);
       resultTable.push(row);
     })
   });

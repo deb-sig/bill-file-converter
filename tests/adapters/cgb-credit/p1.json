@@ -1,0 +1,236 @@
+[
+  {
+    "str": "广发银行信用卡账单",
+    "dir": "ltr",
+    "width": 120,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 240, 760],
+    "fontName": "g_d0_f1",
+    "hasEOL": true
+  },
+  {
+    "str": "交易日期",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 20, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "入账日期",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 120, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "交易摘要",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 180, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "交易金额",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 360, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "交易货币",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 440, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "入账金额",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 520, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "入账货币",
+    "dir": "ltr",
+    "width": 48,
+    "height": 12,
+    "transform": [12, 0, 0, 12, 600, 700],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "2025/01/05",
+    "dir": "ltr",
+    "width": 60,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 20, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "2025/01/06",
+    "dir": "ltr",
+    "width": 60,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 100, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "（消费）",
+    "dir": "ltr",
+    "width": 42,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 180, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "示例商户A",
+    "dir": "ltr",
+    "width": 100,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 222, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "15.90",
+    "dir": "ltr",
+    "width": 28,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 360, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "人民币",
+    "dir": "ltr",
+    "width": 30,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 440, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "15.90",
+    "dir": "ltr",
+    "width": 28,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 520, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "人民币",
+    "dir": "ltr",
+    "width": 30,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 600, 680],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "2025/01/04",
+    "dir": "ltr",
+    "width": 60,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 20, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "2025/01/04",
+    "dir": "ltr",
+    "width": 60,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 100, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "（退款）示例商户B",
+    "dir": "ltr",
+    "width": 168,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 180, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "-97.20",
+    "dir": "ltr",
+    "width": 36,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 360, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "人民币",
+    "dir": "ltr",
+    "width": 30,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 440, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "-97.20",
+    "dir": "ltr",
+    "width": 36,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 520, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "人民币",
+    "dir": "ltr",
+    "width": 30,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 600, 660],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "用卡安全温馨提示：",
+    "dir": "ltr",
+    "width": 90,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 20, 640],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "本期账单金额卡号末四位0000息。",
+    "dir": "ltr",
+    "width": 180,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 120, 640],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  },
+  {
+    "str": "分期明细卡号末四位0000以上金额单位：元商户分期备注：",
+    "dir": "ltr",
+    "width": 300,
+    "height": 10,
+    "transform": [10, 0, 0, 10, 320, 640],
+    "fontName": "g_d0_f1",
+    "hasEOL": false
+  }
+]
